@@ -46,5 +46,18 @@ is an identifier for the 'connect()' function that allows one socket to establis
 with another. The tcp_set_state and tcp_close are tcp tracepoints which tell us when a given
 tcp connection changes state and when it closes respectively.
 
+Screenshot:
+
 ![Screenshot 2025-06-03 at 11 27 07 AM](https://github.com/user-attachments/assets/e62dc200-5daa-4280-b729-044af21c21b3)
 
+## Takeaways from tracking TCP connections
+
+TCP connection time (i.e. time to complete HTTP request / response) follows a long tail
+distribution, with a majority of requests being quick, and a few requests taking much longer.
+This was expected as the majority of our fake curl requests would complete without issue,
+while a few may experience additional latency for whatever reason (i.e. congested network,
+client / server-side issues, etc).
+
+It was also worth noting that a large majority of the time was spent on the actual request /
+response portion of an HTTP request, with a small amount being the handshake time. Although small,
+it was still non-negligible (few ms).
