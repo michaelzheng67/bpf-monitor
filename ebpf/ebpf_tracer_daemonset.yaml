@@ -12,7 +12,6 @@ spec:
         app: ebpf-collector
     spec:
       hostPID: true
-      hostNetwork: false
       dnsPolicy: ClusterFirst
       containers:
         - name: collector
@@ -26,14 +25,6 @@ spec:
               mountPath: /lib/modules
             - name: debugfs
               mountPath: /sys/kernel/debug
-        - name: curl-spammer
-          image: curlimages/curl:latest
-          command: ["/bin/sh", "-c"]
-          args:
-            - while true; do
-              echo "Sending curl..."; curl -v example.com;
-              sleep 5;
-              done
       volumes:
         - name: bpffs
           hostPath:
