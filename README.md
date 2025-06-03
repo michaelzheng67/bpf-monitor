@@ -45,3 +45,6 @@ The linux syscalls that are tracked are sys_connect, tcp_set_state, and tcp_clos
 is an identifier for the 'connect()' function that allows one socket to establish a connection
 with another. The tcp_set_state and tcp_close are tcp tracepoints which tell us when a given
 tcp connection changes state and when it closes respectively.
+
+![Screenshot 2025-06-03 at 11 27 07 AM](https://github.com/user-attachments/assets/e62dc200-5daa-4280-b729-044af21c21b3)
+
